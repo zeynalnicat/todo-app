@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app/common/app_strings.dart';
 import 'package:todo_app/domain/models/todo_model.dart';
+import 'package:todo_app/presentation/providers/todo_provider.dart';
 
 class BottomAddTodo extends StatelessWidget {
   const BottomAddTodo({super.key});
@@ -32,7 +34,7 @@ class BottomAddTodo extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(onPressed: (){
-              TodoModel.addToDo(TodoModel(title: titleController.text, description: descController.text));
+              context.read<TodoProvider>().addToDo(TodoModel(title: titleController.text, description: descController.text));
               Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(

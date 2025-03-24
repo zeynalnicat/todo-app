@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app/domain/models/todo_model.dart';
+import 'package:todo_app/presentation/providers/todo_provider.dart';
 
 class TodoContainer extends StatelessWidget {
   const TodoContainer({super.key, required this.activity});
@@ -24,7 +26,7 @@ class TodoContainer extends StatelessWidget {
               ],
             ),
             Checkbox(value: activity.isChecked, onChanged: (val){
-                TodoModel.toggleCheck(activity.title, val ?? false);
+               Provider.of<TodoProvider>(context,listen: false).toggleCheck(activity.title, val ?? false);
             })
           ],
         ),
